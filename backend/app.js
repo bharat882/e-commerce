@@ -30,6 +30,7 @@ mongoose
     console.error("Error connecting to MongoDB", err);
   });
 
+// POST NEW USER - SIGNUP
 app.post("/signup", async function (req, res) {
   console.log("Signup called");
 
@@ -52,7 +53,6 @@ app.post("/signup", async function (req, res) {
     const newUser = new User({
       username: username,
       email: email,
-      passwordHash: passwordHash,
       firstName: firstName,
       lastName: lastName,
       phone: phone,
@@ -74,6 +74,7 @@ app.post("/signup", async function (req, res) {
   }
 });
 
+// LOGIN
 app.post("/login", async function (req, res) {
   console.log("Login called");
 
@@ -115,6 +116,7 @@ app.post("/login", async function (req, res) {
   }
 });
 
+// POST PRODUCT
 app.post("/product", async function (req, res) {
   console.log("Post Product called");
 
@@ -158,6 +160,79 @@ app.post("/product", async function (req, res) {
   }
 });
 
+// GET PRODUCTS BY CATEGORY ID
+app.get("/products", async function (req, res) {
+  console.log("Get Products by CategoryId called");
+
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  const categoryId = req.query.categoryId;
+
+  try {
+    var products = new Array();
+    products = await Product.find({
+      categoryId: categoryId,
+    });
+    console.log("Products fetched by CategoryId successfully");
+    res.status(200).send(products);
+  } catch (err) {
+    console.log("Failed to fetch products by CategoryId: " + err);
+  }
+});
+
+// GET PRODUCT BY PRODUCT ID
+app.get("/product", async function (req, res) {
+  console.log("Get Products by ProductId called");
+
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  const productId = req.query.productId;
+
+  try {
+    var product = await Product.findOne({
+      productId: productId,
+    });
+
+    console.log("Product fetched by ProductId successfully");
+    res.status(200).send(product);
+  } catch (err) {
+    console.log("Failed to fetch Product by ProductId: " + err);
+    res.status(400).send("Failed to fetch Product by ProductId");
+  }
+});
+
+// GET PRODUCTS BY Featured
+app.get("/product/featured", async function (req, res) {
+  console.log("Get Products by Featured called");
+
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  const featured = req.query.featured;
+
+  try {
+    var products = new Array();
+    products = await Product.find({
+      featured: featured,
+    });
+
+    console.log("Product fetched by Featured successfully");
+    res.status(200).send(products);
+  } catch (err) {
+    console.log("Failed to fetch Products by Featured: " + err);
+    res.status(400).send("Failed to fetch Product by featured");
+  }
+});
+
+// POST CATEGORY
 app.post("/category", async function (req, res) {
   console.log("Post Category called");
 
@@ -183,8 +258,8 @@ app.post("/category", async function (req, res) {
     res.status(400).send("Failed to create category");
   }
 });
-// FETCH CATEGORIES
-app.get("/category", async function (req, res) {
+// FETCH ALL CATEGORIES
+app.get("/categories", async function (req, res) {
   console.log("Get All-Category called");
 
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -201,6 +276,35 @@ app.get("/category", async function (req, res) {
   } catch (err) {
     console.log("Error fetching categories: " + err);
     res.status(400).send("Failed to fetch categories");
+  }
+});
+
+// FETCH CATEGORY BY ID
+app.get("/category", async function (req, res) {
+  console.log("Get Category By Id called");
+
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  const categoryId = req.query.categoryId;
+
+  try {
+    const category = await Category.findOne({
+      categoryId: categoryId,
+    });
+
+    if (!category) {
+      console.log("Category not found");
+      res.status(400).send("Category not found");
+    } else {
+      console.log(category);
+      res.status(200).send(category);
+    }
+  } catch (err) {
+    console.log("Error fetching category: " + err);
+    res.status(400).send("Failed to fetch category");
   }
 });
 
