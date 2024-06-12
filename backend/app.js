@@ -12,7 +12,7 @@ var multer = require("multer");
 var login = multer();
 app.use(login.array());
 app.use(bodyParser.json());
-const port = 3000;
+const port = 3001;
 
 // encrypting the password using bcrypt
 const bcrypt = require("bcrypt");
@@ -309,5 +309,5 @@ app.get("/category", async function (req, res) {
 });
 
 app.listen(port, () => {
-  console.log("Server is running");
+  console.log("Server is running on " + port);
 });
