@@ -1,7 +1,5 @@
-// src/Login.js
-// src/Components/Login.js
 import React from 'react';
-import one from '../Images/one.png'; // Adjust the path according to your structure
+import one from '../Images/one.png'; 
 
 const Login = () => {
   return (
