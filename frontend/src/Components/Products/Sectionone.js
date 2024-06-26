@@ -1,5 +1,5 @@
 import React from 'react';
-import Two from '../../Images/Two.png';
+import Two from '../Images/Two.png';
 
 function SectionOne() {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import one from '../Images/one.png';
+import one from './Images/one.png';
 
 const Signup = () => {
   const [formData, setFormData] = useState({

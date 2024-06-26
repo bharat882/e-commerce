@@ -1,5 +1,5 @@
 import React from 'react';
-import Six from '../../Images/Six.png';
+import Six from '../Images/Six.png';
 
 function Items() {
   const products = [

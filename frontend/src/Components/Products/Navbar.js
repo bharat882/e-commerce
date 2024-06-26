@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
@@ -37,20 +38,30 @@ const Navbar = () => {
         </div>
       </div>
       <div className="border-t-2 border-black">
-        <div className="bg-white shadow mt-2">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <div className="flex items-center space-x-4">
-                <a href="#" className="text-gray-900 inline-flex text-sm font-medium px-8">Home</a>
-                <a href="#" className="text-gray-900 inline-flex text-sm font-medium px-8">Shop</a>
-                <a href="#" className="text-gray-900 inline-flex text-sm font-medium px-8">Hot Deals</a>
-                <a href="#" className="text-gray-900 inline-flex text-sm font-medium px-8">Discounts</a>
-                <a href="#" className="text-gray-900 inline-flex text-sm font-medium px-8">Contact</a>
-              </div>
+      <div className="bg-white shadow mt-2">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-4">
+              <NavLink to="/" exact className="text-gray-900 inline-flex text-sm font-medium px-8" activeClassName="active">
+                Home
+              </NavLink>
+              <NavLink to="/AboutUs" className="text-gray-900 inline-flex text-sm font-medium px-8" activeClassName="active">
+                About Us
+              </NavLink>
+              <NavLink to="/Shop" className="text-gray-900 inline-flex text-sm font-medium px-8" activeClassName="active">
+                Shop
+              </NavLink>
+              <NavLink to="/Discounts" className="text-gray-900 inline-flex text-sm font-medium px-8" activeClassName="active">
+                Discounts
+              </NavLink>
+              <NavLink to="/Contact" className="text-gray-900 inline-flex text-sm font-medium px-8" activeClassName="active">
+                Contact
+              </NavLink>
             </div>
           </div>
         </div>
       </div>
+    </div>
       <div className="border-t-2 border-black"></div>
     </nav>
   );
