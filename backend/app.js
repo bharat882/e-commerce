@@ -47,9 +47,9 @@ app.post("/signup", async function (req, res) {
   var phone = req.body.phone;
   var imageUrl = req.body.imageUrl;
 
-  try {
-    const passwordHash = await bcrypt.hash(password, saltRounds);
+  console.log(req.body);
 
+  try {
     const newUser = new User({
       username: username,
       email: email,
@@ -59,13 +59,24 @@ app.post("/signup", async function (req, res) {
       imageUrl: imageUrl,
     });
 
-    const newUserCredentials = new UserCredentials({
-      username: username,
-      passwordHash: passwordHash,
+    await newUser.save();
+
+    console.log("User Details saved");
+
+    // implement bcrypt for creating passwordHash
+
+    bcrypt.genSalt(saltRounds, async function (err, salt) {
+      bcrypt.hash(password, salt, async function (err, passwordHash) {
+        const newUserCredentials = new UserCredentials({
+          username: username,
+          passwordHash: passwordHash,
+        });
+
+        await newUserCredentials.save();
+        // Store hash in your password DB.
+      });
     });
 
-    await newUser.save();
-    await newUserCredentials.save();
     console.log("User created successfully");
     res.status(200).send("User created successfully");
   } catch (err) {
@@ -216,12 +227,10 @@ app.get("/product/featured", async function (req, res) {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Allow-Credentials", true);
 
-  const featured = req.query.featured;
-
   try {
     var products = new Array();
     products = await Product.find({
-      featured: featured,
+      featured: 1,
     });
 
     console.log("Product fetched by Featured successfully");
