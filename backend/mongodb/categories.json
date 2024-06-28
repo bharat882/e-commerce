@@ -1,0 +1,52 @@
+[
+  {
+    "categoryId": 1,
+    "name": "Electronics",
+    "description": "Devices, gadgets, and accessories"
+  },
+  {
+    "categoryId": 2,
+    "name": "Clothing",
+    "description": "Apparel for men, women, and children"
+  },
+  {
+    "categoryId": 3,
+    "name": "Home & Kitchen",
+    "description": "Appliances, furniture, and kitchen essentials"
+  },
+  {
+    "categoryId": 4,
+    "name": "Books",
+    "description": "Fiction, non-fiction, textbooks, and more"
+  },
+  {
+    "categoryId": 5,
+    "name": "Sports & Outdoors",
+    "description": "Equipment, apparel, and accessories for outdoor activities"
+  },
+  {
+    "categoryId": 6,
+    "name": "Beauty & Health",
+    "description": "Skincare, makeup, personal care, and health products"
+  },
+  {
+    "categoryId": 7,
+    "name": "Toys & Games",
+    "description": "Toys, board games, and puzzles for all ages"
+  },
+  {
+    "categoryId": 8,
+    "name": "Automotive",
+    "description": "Car accessories, tools, and parts"
+  },
+  {
+    "categoryId": 9,
+    "name": "Jewelry & Watches",
+    "description": "Fine jewelry, fashion accessories, and timepieces"
+  },
+  {
+    "categoryId": 10,
+    "name": "Pet Supplies",
+    "description": "Food, toys, and accessories for pets"
+  }
+]
