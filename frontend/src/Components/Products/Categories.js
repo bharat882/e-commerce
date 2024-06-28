@@ -1,9 +1,8 @@
 import React from 'react';
-import Five from '../../Images/Five.png';
-import Six from '../../Images/Six.png';
-import Seven from '../../Images/Seven.png';
-import Eight from '../../Images/Eight.png';
-
+import Five from '../Images/Five.png';
+import Six from'../Images/Six.png';
+import Seven from '../Images/Seven.png';
+import Eight from '../Images/Eight.png';
 function Categories() {
   const categories = [
     {

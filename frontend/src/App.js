@@ -10,6 +10,12 @@ import Views from './Components/Products/Views';
 import Items from './Components/Products/Items';
 import SubscribeFooter from './Components/Products/SubscribeFooter';
 import MainFooter from './Components/Products/MainFooter';
+import Contact from './Components/nav-items/Contact';
+import About from './Components/nav-items/AboutUs';
+import Shop from './Components/nav-items/Shop';
+import Header from './Components/nav-items/Discounts/Header';
+import Category from './Components/nav-items/Discounts/Category';
+import Product from './Components/nav-items/Discounts/Product';
 
 function App() {
   return (
@@ -17,9 +23,8 @@ function App() {
       <div className='App'>
         <Routes>
          <Route path="/login" element={<Login/>} />
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/" element={<Login/>} />  
-          <Route path="/Products" element={
+          <Route path="/signup" element={<Signup/>}/> 
+          <Route path="/" element={
             <>
               <Navbar />
               <SectionOne />
@@ -27,6 +32,40 @@ function App() {
               <Categories/>
               <Views/>
               <Items/>
+              <SubscribeFooter/>
+              <MainFooter/>
+            </>
+          } />
+          <Route path="/Contact" element={
+            <>
+              <Navbar/>
+              <Contact/>
+              <SubscribeFooter/>
+              <MainFooter/>
+            </>
+          } />
+          <Route path="/AboutUs" element={
+            <>
+              <Navbar/>
+              <About/>
+              <SubscribeFooter/>
+              <MainFooter/>
+            </>
+          } />
+          <Route path="/Shop" element={
+            <>
+              <Navbar/>
+              <Shop/>
+              <SubscribeFooter/>
+              <MainFooter/>
+            </>
+          } />
+          <Route path="/Discounts" element={
+            <>
+              <Navbar/>
+              <Header/>
+              <Category/>
+              <Product/>
               <SubscribeFooter/>
               <MainFooter/>
             </>
